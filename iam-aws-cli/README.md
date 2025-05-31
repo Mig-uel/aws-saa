@@ -121,6 +121,20 @@ IAM provides several security tools to help you manage access to your AWS resour
 - Enable logging and monitoring for IAM activities using AWS CloudTrail to track changes and access to your AWS resources.
 - **NEVER SHARE IAM USERS AND ACCESS KEYS**.
 
+### IAM: Summary
+
+- IAM is a global service for managing access to AWS resources.
+- It allows you to create and manage users, groups, roles, and policies.
+- Users are mapped to a physical person; has a unique username and password.
+- Groups are collections of users that share the same permissions.
+- Policies are JSON documents that define permissions and can be attached to users, groups, or roles.
+- Roles are used to delegate access to AWS resources without sharing long-term credentials.
+- Security best practices include using the principle of least privilege, enforcing MFA, and regularly reviewing IAM configurations.
+- AWS CLI is a command-line tool for managing AWS services.
+- AWS SDKs provide programming language-specific APIs to interact with AWS services.
+- Access keys are used to authenticate requests made through the AWS CLI and SDKs.
+- Audit and monitor IAM activities using tools like IAM Credentials Report and IAM Last Accessed.
+
 ## AWS Access Keys, CLI, and SDKs
 
 ### How Can Users Access AWS?
