@@ -222,3 +222,13 @@ When configuring Security Groups, it's important to know the common ports used b
 - **HTTP**: Port 80 (for unsecured web traffic)
 - **HTTPS**: Port 443 (for secured web traffic)
 - **RDP**: Port 3389 (for remote desktop protocol access to Windows instances)
+
+## SSH Overview
+
+SSH (Secure Shell) is a protocol used to securely connect to remote servers and manage them over a network. It provides a secure channel over an unsecured network, allowing users to execute commands and transfer files securely.
+
+- SSH is a secure way to connect to remote servers.
+- It is a command-line tool that allows users to log in to remote machines securely.
+- It uses encryption to protect the data transmitted between the client and the server.
+- SSH is commonly used to manage Linux instances in AWS.
+- It allows users to execute commands, transfer files, and perform administrative tasks on remote servers.
