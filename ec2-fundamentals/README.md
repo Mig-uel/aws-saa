@@ -232,3 +232,106 @@ SSH (Secure Shell) is a protocol used to securely connect to remote servers and 
 - It uses encryption to protect the data transmitted between the client and the server.
 - SSH is commonly used to manage Linux instances in AWS.
 - It allows users to execute commands, transfer files, and perform administrative tasks on remote servers.
+
+## EC2 Instances Purchasing Options
+
+When launching EC2 instances, you have several purchasing options to choose from based on your workload requirements and budget. The main purchasing options are:
+
+- **On-Demand Instances**: Pay for compute capacity by the hour or second, with no long-term commitments. Ideal for short-term workloads or unpredictable traffic.
+- **Reserved Instances**: Commit to using EC2 instances for a one-year or three-year term in exchange for a significant discount compared to On-Demand pricing. Suitable for steady-state workloads.
+- **Spot Instances**: Bid on unused EC2 capacity at potentially lower prices. Spot Instances can be interrupted by AWS with little notice, making them suitable for flexible workloads that can tolerate interruptions.
+- **Savings Plans**: Flexible pricing model that provides significant savings on EC2 usage in exchange for a commitment to a consistent amount of usage (measured in $/hour) for a one- or three-year term. It applies to any EC2 instance regardless of region, instance family, operating system, or tenancy.
+- **Dedicated Hosts**: Physical servers dedicated to your use, allowing you to run your instances on hardware that is not shared with other AWS customers. Useful for compliance and licensing requirements.
+- **Dedicated Instances**: Instances that run on hardware dedicated to a single customer, but share the underlying hardware with other instances. They provide additional isolation compared to standard instances.
+- **Capacity Reservations**: Reserve capacity for your EC2 instances in a specific Availability Zone, ensuring that you have the compute capacity available when you need it. This is useful for applications with predictable workloads.
+
+### EC2 On-Demand Instances
+
+On-Demand Instances allow you to pay for compute capacity by the hour or second, with no long-term commitments. This flexibility makes them ideal for short-term workloads or unpredictable traffic.
+
+- You can launch and terminate instances as needed, paying only for the time they are running.
+- On-Demand Instances are suitable for applications with variable workloads, development and testing environments, and applications that cannot be interrupted.
+- They provide the highest level of flexibility and scalability, allowing you to quickly adapt to changing requirements.
+- On-Demand Instances are charged based on the instance type, region, and operating system.
+- They are billed by the second, with a minimum of 60 seconds for Linux instances and 1 hour for Windows instances.
+- Has the highest cost compared to other purchasing options.
+
+### EC2 Reserved Instances
+
+Reserved Instances provide a significant discount compared to On-Demand pricing in exchange for a commitment to use EC2 instances for a one-year or three-year term. They are ideal for steady-state workloads.
+
+- Reserved Instances are not physical instances but rather a billing discount applied to the use of On-Demand Instances.
+- They provide a capacity reservation in the specified Availability Zone, ensuring that you have the compute capacity available when you need it.
+- Reserved Instances are suitable for applications with predictable workloads, such as web servers, databases, and enterprise applications.
+- They can be purchased in three payment options:
+  - All Upfront: Pay the entire reservation fee upfront for the term.
+  - Partial Upfront: Pay a portion of the reservation fee upfront and the rest in monthly installments.
+  - No Upfront: Pay for the reservation in monthly installments over the term.
+- You can reserve a specific instance attributes, such as instance type, region, and Availability Zone.
+- Reserved Instance's Scope can be set to either regional or zonal, depending on your needs.
+- Recommended for steady-state workloads that require consistent compute capacity.
+- You can buy and sell Reserved Instances in the AWS Marketplace, allowing you to adjust your capacity as needed.
+
+There is a special type of Reserved Instances called **Convertible Reserved Instances** that allow you to change the instance type, operating system, or tenancy during the term, providing additional flexibility.
+
+### EC2 Savings Plans
+
+Savings Plans are a flexible pricing model that provides significant savings on EC2 usage in exchange for a commitment to a consistent amount of usage (measured in $/hour) for a one- or three-year term. It applies to any EC2 instance regardless of region, instance family, operating system, or tenancy.
+
+- Savings Plans offer a flexible alternative to Reserved Instances, allowing you to save on your EC2 costs while maintaining the flexibility to change instance types and configurations.
+- Get a discount based on long-term usage commitment, similar to Reserved Instances.
+- Commit to a specific amount of usage (measured in $/hour) for a one- or three-year term.
+- Usage beyond the committed amount is charged at the On-Demand rate.
+- Locked to a specific instance family and AWS Region, but allows you to change instance types and configurations within that family.
+- Flexible across instance sizes, operating systems, and tenancies.
+
+### EC2 Spot Instances
+
+Spot Instances allow you to bid on unused EC2 capacity at potentially lower prices. They can be interrupted by AWS with little notice, making them suitable for flexible workloads that can tolerate interruptions.
+
+- Spot Instances are ideal for workloads that are flexible and can be interrupted, such as batch processing, data analysis, and machine learning training.
+- Can get significant cost savings compared to On-Demand Instances, often up to 90% off the On-Demand price.
+- Instances that you can 'lose' at any point of time if your max price is lower than the current Spot price.
+- The MOST cost-effective way to run workloads in AWS.
+- Not suitable for production workloads or applications that require high availability.
+
+### EC2 Dedicated Hosts
+
+Dedicated Hosts are physical servers dedicated to your use. They provide you with complete control over the physical server and are ideal for applications that require compliance with specific licensing or regulatory requirements.
+
+- A physical server with EC2 instance capacity fully dedicated to your use.
+- Allows you to address compliance and regulatory requirements that require physical isolation.
+- Purchasing options:
+  - On-demand: pay per second for active Dedicated Hosts.
+  - Reserved: 1-year or 3-year term with a significant discount.
+- The most expensive purchasing option.
+- Useful for software that have complicated licensing model (BYOL, etc.) or for applications that require physical isolation.
+
+### EC2 Dedicated Instances
+
+Dedicated Instances are instances that run on hardware dedicated to a single customer. They provide additional isolation compared to standard instances, but share the underlying hardware with other instances.
+
+- Dedicated Instances run on hardware that is dedicated to a single customer, providing additional isolation compared to standard instances.
+- May share the underlying hardware with other instances, but are isolated at the hypervisor level.
+- No control over instance placement, meaning you cannot choose which physical server your instances run on.
+
+### EC2 Capacity Reservations
+
+Capacity Reservations allow you to reserve capacity for your EC2 instances in a specific Availability Zone, ensuring that you have the compute capacity available when you need it. This is useful for applications with predictable workloads.
+
+- Reserve On-Demand instances capacity in a specific Availability Zone for any duration.
+- You always have access to the reserved capacity, even during peak demand periods.
+- No time commitment is required, and you can cancel the reservation at any time.
+- No billing discount is applied, and you pay the On-Demand rate for the reserved capacity.
+- You are charged for the reserved capacity regardless of whether you use it or not.
+- Suitable for short-term workloads that require guaranteed capacity, such as batch processing, data analysis, and machine learning training.
+
+### Which Purchasing Option to Choose?
+
+- **On-Demand Instances:** coming and stating in resort whenever we like, we pay for the time we use them.
+- **Reserved Instances:** like planning ahead and if we plan to stay for a long time, we may get a good discount.
+- **Savings Plans:** pay a certain amount per hour for a certain period of time, and stay in any room type we want.
+- **Spot Instances:** the hotel allows people to bid on unused rooms and the highest bidder gets the room, but the hotel can kick us out at any time if they need the room back.
+- **Dedicated Hosts:** like renting a whole hotel for ourselves, we have complete control over the rooms and can customize them as we like.
+- **Dedicated Instances:** like renting a room in a hotel that is dedicated to us, but we share the underlying infrastructure with other guests.
+- **Capacity Reservations:** booking a room for a period of time, ensuring that we have a room available when we need it, but we pay the full price for the room regardless of whether we use it or not.

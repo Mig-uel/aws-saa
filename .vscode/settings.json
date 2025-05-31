@@ -1,3 +1,11 @@
 {
-  "cSpell.words": ["Boto", "Gbps", "Mbps", "OLTP", "permissioned", "xlarge"]
+  "cSpell.words": [
+    "Boto",
+    "BYOL",
+    "Gbps",
+    "Mbps",
+    "OLTP",
+    "permissioned",
+    "xlarge"
+  ]
 }
