@@ -7,4 +7,5 @@ This repository also follows the [Ultimate AWS Certified Solutions Architect Ass
 ## Course Notes
 
 [Getting Started with AWS](./getting-started-aws/README.md)
+
 [IAM and AWS CLI](./iam-aws-cli/README.md)
