@@ -82,6 +82,24 @@ MFA adds an extra layer of security to your AWS account by requiring a second fo
 - When MFA is enabled, users must provide a one-time code from their MFA device in addition to their password when signing in.
 - MFA is highly recommended for the root user and any IAM users with administrative privileges.s
 
+### IAM: Roles
+
+IAM roles are a way to delegate access to AWS resources without sharing long-term credentials. Roles can be assumed by users, applications, or services.
+
+- Roles are not associated with a specific user or group, but can be assumed by anyone who has permission to do so.
+- Some AWS services will need to perform actions on your behalf, such as EC2 instances needing to access S3 buckets.
+- You can create a role with specific permissions and then allow an AWS service to assume that role.
+- Roles can be used to grant temporary access to AWS resources, which is useful for applications running on EC2 instances or Lambda functions.
+- Roles can also be used to grant access to AWS resources across accounts, allowing for cross-account access.
+- Common use cases for roles include:
+  - Granting permissions to AWS services (e.g., EC2, Lambda) to access other AWS resources.
+  - Allowing users from another AWS account to access resources in your account.
+  - Providing temporary access to users or applications without sharing long-term credentials.
+- Common roles include:
+  - **EC2 Instance Role**: Allows EC2 instances to access AWS resources.
+  - **Lambda Execution Role**: Allows Lambda functions to access AWS resources.
+  - **Roles for CloudFormation**: Allows CloudFormation stacks to create and manage resources on your behalf.
+
 ## AWS Access Keys, CLI, and SDKs
 
 ### How Can Users Access AWS?
