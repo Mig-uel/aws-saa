@@ -43,3 +43,22 @@ IAM permissions are policies that define what actions are allowed or denied on s
 - Tags can be used to organize and manage resources, and can also be used for cost allocation and billing.
 - You can create and manage tags using the AWS Management Console, AWS CLI, or AWS SDKs.
 - Tags can be used to filter resources in the AWS Management Console, and can also be used in IAM policies to control access to resources based on tags.
+
+### IAM: Policies
+
+- We can attach policies to users, groups, or roles levels.
+- Policies can be inherited from groups to users.
+
+### IAM: Policies Structure
+
+IAM policies are JSON documents that define permissions. The structure of an IAM policy includes:
+
+- **Version**: The version of the policy language. The current version is "2012-10-17".
+- **Id**: An optional identifier for the policy.
+- **Statement**: An array of statements that define the permissions. Each statement includes:
+  - **Sid**: An optional identifier for the statement.
+  - **Effect**: Either "Allow" or "Deny", indicating whether the action is allowed or denied.
+  - **Action**: The specific actions that are allowed or denied (e.g., "s3:ListBucket").
+  - **Resource**: The resources to which the actions apply (e.g., "\*", which means all resources).
+  - **Principal**: The AWS account or user to which the policy applies (used in resource-based policies).
+- **Condition**: Optional conditions that must be met for the policy to apply (e.g., based on tags or IP addresses).
