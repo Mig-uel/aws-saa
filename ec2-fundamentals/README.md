@@ -335,3 +335,9 @@ Capacity Reservations allow you to reserve capacity for your EC2 instances in a 
 - **Dedicated Hosts:** like renting a whole hotel for ourselves, we have complete control over the rooms and can customize them as we like.
 - **Dedicated Instances:** like renting a room in a hotel that is dedicated to us, but we share the underlying infrastructure with other guests.
 - **Capacity Reservations:** booking a room for a period of time, ensuring that we have a room available when we need it, but we pay the full price for the room regardless of whether we use it or not.
+
+## IP Address Charges in AWS
+
+In AWS, there are charges associated with the use of IP addresses, particularly Elastic IP addresses (EIPs) and public IP addresses.
+
+Starting from February 2024, there are charges for all public IPv4 addresses created in your account.
