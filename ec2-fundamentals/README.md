@@ -84,3 +84,97 @@ EC2 instances are categorized into different families based on their capabilitie
 | m5.8xlarge    | 32    | 128          | EBS-Only     | Up to 10 Gbps       | 6,800 Mbps    | General-purpose applications, web servers    |
 
 The idea of this is that you can choose the instance type that best fits your application's requirements based on the CPU, memory, storage, and networking capabilities.
+
+### EC2 Instance Types - Overview
+
+You can use different types of EC2 instances that are optimized for different use cases.
+
+You can check the [AWS EC2 Instance Types documentation](https://aws.amazon.com/ec2/instance-types/) for the latest information on instance types and their specifications.
+
+AWS has the following naming convention for EC2 instance types:
+
+- The first letter indicates the instance family/instance class (e.g., `t` for General Purpose, `c` for Compute Optimized, `r` for Memory Optimized)
+- The second letter indicates the generation of the instance type (e.g., `3` for the third generation, `4` for the fourth generation)
+- The number indicates the size of the instance (e.g., `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, etc.). The larger the number, the more resources the instance has.
+
+For example, `t3.micro` is a General Purpose instance of the third generation with a small size.
+
+### EC2 Instance Types - General Purpose
+
+General Purpose instances provide a balance of compute, memory, and networking resources, making them suitable for a variety of workloads. They are ideal for applications that require a moderate level of CPU and memory performance.
+
+- Great for a diversity of workloads, such as web servers, small databases, and development environments.
+- Good balance between:
+  - Compute (CPU)
+  - Memory (RAM)
+  - Networking (Network Bandwidth)
+
+Some examples of General Purpose instance types include:
+
+- `t3.micro`
+- `t3a.micro`
+- `t4g.micro`
+- `m5.large`
+- `m5a.large`
+- `m5n.large`
+- `m6g.large`
+
+### EC2 Instance Types - Compute Optimized
+
+Compute Optimized instances are designed for compute-intensive workloads that require high-performance processors. They are ideal for applications that require high CPU performance, such as high-performance web servers, batch processing, and gaming.
+
+- Great for compute-intensive tasks that require high-performance processors
+- Tasks such as:
+  - High-performance web servers
+  - Batch processing workloads
+  - Media transcoding
+  - High-performance computing (HPC)
+  - Scientific modeling and machine learning
+  - Dedicated gaming servers
+
+Some examples of Compute Optimized instance types include:
+
+- `c5.large`
+- `c5a.large`
+- `c5n.large`
+- `c6g.large`
+
+### EC2 Instance Types - Memory Optimized
+
+Memory Optimized instances are designed for memory-intensive applications that require high memory-to-CPU ratios. They are ideal for applications such as databases, in-memory caches, and real-time big data analytics.
+
+- Fast performance for workloads that process large data sets in memory
+- Tasks such as:
+  - High-performance databases (e.g., MySQL, PostgreSQL, MongoDB)
+  - In-memory caches (e.g., Redis, Memcached)
+  - Real-time big data analytics
+  - Data warehousing
+  - High-performance computing (HPC)
+  - Distributed web scale cache stores
+  - Applications performing real-time processing of big unstructured data
+
+Some examples of Memory Optimized instance types include:
+
+- `r5.large`
+- `r5a.large`
+- `r5n.large`
+- `r6g.large`
+
+### EC2 Instance Types - Storage Optimized
+
+Storage Optimized instances are designed for data-intensive applications that require high disk throughput and IOPS. They are ideal for applications such as NoSQL databases, data warehousing, and log processing.
+
+- Great for storage-intensive tasks that require high, sequential disk read and write access to large data sets on local storage
+- Tasks such as:
+  - High frequency online transaction processing (OLTP) systems
+  - Relational and NoSQL databases
+  - Cache for in-memory databases
+  - Data warehousing
+  - Distributed file systems
+
+Some examples of Storage Optimized instance types include:
+
+- `i3.large`
+- `i3en.large`
+- `d2.large`
+
