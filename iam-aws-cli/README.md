@@ -100,6 +100,14 @@ IAM roles are a way to delegate access to AWS resources without sharing long-ter
   - **Lambda Execution Role**: Allows Lambda functions to access AWS resources.
   - **Roles for CloudFormation**: Allows CloudFormation stacks to create and manage resources on your behalf.
 
+### IAM: Security Tools
+
+IAM provides several security tools to help you manage access to your AWS resources:
+
+- **IAM Credentials Report**: A report that lists all IAM users in your account and their credentials, including access keys and MFA devices.
+- **IAM Last Accessed**: A tool that shows the service permissions granted to IAM users and roles, along with the last accessed time for each service.
+  - You can use this information to identify unused permissions and reduce the risk of over-permissioned users.
+
 ## AWS Access Keys, CLI, and SDKs
 
 ### How Can Users Access AWS?
