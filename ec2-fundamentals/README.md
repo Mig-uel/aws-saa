@@ -85,7 +85,7 @@ EC2 instances are categorized into different families based on their capabilitie
 
 The idea of this is that you can choose the instance type that best fits your application's requirements based on the CPU, memory, storage, and networking capabilities.
 
-### EC2 Instance Types - Overview
+## EC2 Instance Types - Overview
 
 You can use different types of EC2 instances that are optimized for different use cases.
 
@@ -178,3 +178,47 @@ Some examples of Storage Optimized instance types include:
 - `i3en.large`
 - `d2.large`
 
+## Security Groups and Classic Ports
+
+### Introduction to Security Groups
+
+Security Groups are virtual firewalls that control inbound and outbound traffic to EC2 instances. They act as a security layer to protect instances from unauthorized access.
+
+- Security Groups are the fundamental of network security in AWS.
+- They are used to control inbound and outbound traffic to EC2 instances.
+- Security Groups are stateful, meaning that if you allow inbound traffic on a specific port, the response traffic is automatically allowed.
+- Security Groups only contain allow rules, meaning you can only specify what traffic is allowed, not what traffic is denied.
+- Security Groups rules can references by IP address, CIDR blocks, or other Security Groups.
+
+### Security Groups - Deeper Dive
+
+Security Groups are associated with EC2 instances and control the traffic that can reach them. They can be configured to allow or deny traffic based on various criteria.
+
+- Security Groups are acting as virtual firewalls for your instances.
+- They regulate:
+  - Access to ports
+  - Authorized IP ranges - IPv4 and IPv6
+  - Control of inbound network traffic (from the internet to your instance)
+  - Control of outbound network traffic (from your instance to the internet)
+
+### Security Groups - Good to Know
+
+- Security Groups are associated with EC2 instances, not the VPC.
+- You can associate multiple Security Groups with an instance.
+- Locked down to a region, meaning you cannot use a Security Group from one region in another region.
+- Does live "outside" the EC2 instance - if traffic is blocked by a Security Group, the instance will not see it.
+- It's good to maintain one separate Security Group for SSH access, one for HTTP access, and one for HTTPS access.
+- If your application is not accessible (timeout), check the Security Group rules first.
+- If your application gives a "connection refused" error, then it is an application error or the application is not running.
+- By default, all inbound traffic is blocked, and all outbound traffic is allowed.
+
+### Classic Ports to Know
+
+When configuring Security Groups, it's important to know the common ports used by various services. Here are some classic ports you should be aware of:
+
+- **SSH**: Port 22 (for secure shell access to Linux instances)
+- **FTP**: Port 21 (for file transfer protocol)
+- **SFTP**: Port 22 (for secure file transfer protocol, often used with SSH)
+- **HTTP**: Port 80 (for unsecured web traffic)
+- **HTTPS**: Port 443 (for secured web traffic)
+- **RDP**: Port 3389 (for remote desktop protocol access to Windows instances)
