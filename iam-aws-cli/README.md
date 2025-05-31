@@ -35,3 +35,11 @@ IAM permissions are policies that define what actions are allowed or denied on s
 
 - The above policy allows the user to list all S3 buckets in the account.
 - In AWS, you don't allow everyone to do everything. Instead, you start with no permissions and then add permissions as needed. This is known as the principle of least privilege and prevents accidental or malicious actions.
+
+### Tags
+
+- Tags can be used to add metadata to AWS resources.
+- Tags are key-value pairs that can be attached to AWS resources.
+- Tags can be used to organize and manage resources, and can also be used for cost allocation and billing.
+- You can create and manage tags using the AWS Management Console, AWS CLI, or AWS SDKs.
+- Tags can be used to filter resources in the AWS Management Console, and can also be used in IAM policies to control access to resources based on tags.
