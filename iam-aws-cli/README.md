@@ -108,6 +108,19 @@ IAM provides several security tools to help you manage access to your AWS resour
 - **IAM Last Accessed**: A tool that shows the service permissions granted to IAM users and roles, along with the last accessed time for each service.
   - You can use this information to identify unused permissions and reduce the risk of over-permissioned users.
 
+### IAM: Best Practices
+
+- Do not use the root account for everyday tasks. Create an IAM user with administrative privileges instead.
+- One physical user = one IAM user. Do not share IAM user accounts.
+- Assign users to groups based on their job functions and grant permissions at the group level.
+- Create a strong password policy and enforce MFA for all users, especially those with administrative privileges.
+- Create and use Roles for giving permission to AWS services and applications, rather than using long-term credentials.
+- Use Access Keys for programmatic access to AWS services, and rotate them regularly.
+- Regularly review and audit IAM users, groups, roles, and policies to ensure they follow the principle of least privilege. You can use IAM Credentials Report and IAM Last Accessed to help with this.
+- Use tags to organize and manage resources, and to control access based on tags.
+- Enable logging and monitoring for IAM activities using AWS CloudTrail to track changes and access to your AWS resources.
+- **NEVER SHARE IAM USERS AND ACCESS KEYS**.
+
 ## AWS Access Keys, CLI, and SDKs
 
 ### How Can Users Access AWS?
