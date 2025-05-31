@@ -62,3 +62,22 @@ IAM policies are JSON documents that define permissions. The structure of an IAM
   - **Resource**: The resources to which the actions apply (e.g., "\*", which means all resources).
   - **Principal**: The AWS account or user to which the policy applies (used in resource-based policies).
 - **Condition**: Optional conditions that must be met for the policy to apply (e.g., based on tags or IP addresses).
+
+### IAM: Password Policy
+
+IAM allows you to set a password policy for your AWS account:
+
+- You can setup a minimum password length.
+- Require specific character types (uppercase, lowercase, numbers, symbols).
+- Enforce password expiration and history.
+- Allow all IAM users to change their own passwords.
+- You can also enforce MFA (Multi-Factor Authentication) for added security.
+
+### IAM: MFA (Multi-Factor Authentication)
+
+MFA adds an extra layer of security to your AWS account by requiring a second form of authentication in addition to your password.
+
+- MFA devices can be virtual (e.g., Google Authenticator) or hardware devices.
+- You can enable MFA for the root user and IAM users.
+- When MFA is enabled, users must provide a one-time code from their MFA device in addition to their password when signing in.
+- MFA is highly recommended for the root user and any IAM users with administrative privileges.s
