@@ -9,3 +9,5 @@ This repository also follows the [Ultimate AWS Certified Solutions Architect Ass
 [Getting Started with AWS](./getting-started-aws/README.md)
 
 [IAM and AWS CLI](./iam-aws-cli/README.md)
+
+[EC2 Fundamentals](./ec2-fundamentals/README.md)
