@@ -341,3 +341,55 @@ Capacity Reservations allow you to reserve capacity for your EC2 instances in a 
 In AWS, there are charges associated with the use of IP addresses, particularly Elastic IP addresses (EIPs) and public IP addresses.
 
 Starting from February 2024, there are charges for all public IPv4 addresses created in your account.
+
+## Spot Instances and Spot Fleet
+
+Spot Instances are a cost-effective way to run workloads in AWS by bidding on unused EC2 capacity. They can be interrupted by AWS with little notice, making them suitable for flexible workloads that can tolerate interruptions.
+
+- Can get a discount of up to 90% compared to On-Demand Instances.
+- We define a maximum price we are willing to pay for the Spot Instances.
+- If the Spot price goes above our maximum price, our Spot Instances can be terminated with little notice.
+  - The hourly spot price varies based on supply and demand.
+- If the current spot price is greater than our maximum price, you can choose to either:
+  - Terminate the Spot Instances.
+  - Stop the Spot Instances (if they are configured to do so).
+- Spot blocks were a feature that allowed you to run Spot Instances for a fixed duration without interruption, but they have been deprecated.
+- Spot Instances are ideal for workloads that can tolerate interruptions, such as batch jobs, data analysis, or workloads that are resilient to interruptions.
+
+### How to Terminate Spot Instances
+
+A Spot Request is a request to launch Spot Instances. It consists of the following components:
+
+- Maximum price: The maximum price you are willing to pay for the Spot Instances.
+- Desired capacity: The number of Spot Instances you want to launch.
+- Launch specifications: The configuration of the Spot Instances, such as instance type, AMI, security groups, and user data.
+- Request type: The type of Spot Request, which can be either one-time or persistent.
+- Validation period: The time period during which the Spot Request is valid.
+
+To terminate Spot Instances, the Spot Instance requests must be:
+
+- In the `open` state.
+- In the `active` state.
+- In the `disabled` state.
+
+Cancelling a Spot Request does not terminate the Spot Instances. If you want to terminate the Spot Instances, you first need to cancel the Spot Request, and then terminate the Spot Instances manually.
+
+### Spot Fleets
+
+Spot Fleets are a collection of Spot Instances that can be launched together to meet a specific capacity requirement. They allow you to manage multiple Spot Instances as a single entity, making it easier to scale your workloads.
+
+- A Spot Fleet is a collection of Spot Instances + optionally On-Demand Instances.
+- The Spot Fleet will try to fulfill the target capacity with price constraints and instance types that you specify.
+  - Define possible launch pools: instance types, availability zones, OS, etc.
+  - Can have multiple launch pools so that the Spot Fleet can choose the best option based on availability and price.
+  - Spot Fleet stops launching instances when the target capacity is reached or when the maximum price is reached.
+
+We define strategies for how the Spot Fleet should fulfill the target capacity:
+
+- **Lowest Price**: The Spot Fleet will launch instances from the lowest-priced available Spot Instances (cost optimization, short workloads).
+- **Diversified**: The Spot Fleet will launch instances from multiple Spot Instance pools to reduce the risk of interruption (availability optimization, long workloads).
+- **Capacity Optimized**: The Spot Fleet will launch instances from the most available Spot Instance pools to reduce the risk of interruption (availability optimization, long workloads).
+- **Price Capacity Optimized**: The Spot Fleet will launch instances from the most available Spot Instance pools that are below the maximum price (availability optimization, cost optimization, long workloads).
+
+The idea of Spot Fleets is that it can be complicated but using the Spot Fleet you are able to define multiple launch pools, multiple instance types, and multiple strategies to fulfill the target capacity.
+Spot Fleets allow us to automatically request Spot Instances with the lowest price, or with the most available capacity, or with a combination of both.
