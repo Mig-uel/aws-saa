@@ -11,3 +11,5 @@ This repository also follows the [Ultimate AWS Certified Solutions Architect Ass
 [IAM and AWS CLI](./iam-aws-cli/README.md)
 
 [EC2 Fundamentals](./ec2-fundamentals/README.md)
+
+[EC2 Solutions Architect Associate Level](./ec2-saa-level/README.md)
