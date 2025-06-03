@@ -118,3 +118,73 @@ Instance Stores:
 - Risk of data loss if the instance fails or is terminated.
 - Cannot be detached and reattached to other instances like EBS volumes.
 - It is you responsibility to manage data persistence and backups.
+
+## EBS Volume Types
+
+EBS volumes come in 6 different types, each optimized for different use cases. The main types are:
+
+**gp2/gp3**: General Purpose SSD volumes that balances prices and performance for a wide range of workloads.
+
+- Balanced price and performance.
+- Suitable for a wide range of workloads, including boot volumes and small to medium-sized databases.
+- gp3 offers higher performance at a lower cost compared to gp2.
+
+**io1/io2 Block Express (SSD)**: Provisioned IOPS SSD volumes designed for I/O-intensive applications that require high performance and low latency.
+
+- Designed for I/O-intensive applications that require high performance and low latency.
+- Highest performance SSD volume for mission-critical low-latency or high-throughput workloads.
+
+**st1 (HDD)**: Low-cost HDD volumes for frequently accessed, throughput-intensive workloads.
+
+- Suitable for big data, data warehouses, and log processing.
+
+**sc1 (HDD)**: Lowest-cost HDD volumes for less frequently accessed workloads.
+
+- Suitable for infrequently accessed data, such as backups and archives.
+
+EBS volumes are characterized in Size, Throughput, and IOPS (Input/Output Operations Per Second)
+
+- When in doubt always consult the AWS documentation for the latest information on EBS volume types and their specifications.
+- Only gp2/gp3 and io1/io2 Block Express volumes can be used as boot volumes (the root volume of an EC2 instance).
+
+### EBS Volume Types Use Cases
+
+**General Purpose SSD**
+
+- Cost effective storage with low latency.
+- Used for boot volumes, virtual desktops, development and test environments, and small to medium-sized databases.
+- Size can be between 1 GB and 16 TB.
+- gp3
+  - Is a newer generation of volumes
+  - Baseline of 3,000 IOPS and 125 MiB/s throughput.
+  - Can increase IOPS up to 16,000 and throughput up to 1,000 MiB/s independently.
+- gp2
+  - Is the older generation of volumes
+  - Small gp2 volumes can burst IOPS up to 3,000.
+  - Size of the volume and IOPS are linked (max IOPS is 16,000).
+  - 3 IOPS per GB, means at 5,334 GB you get the max IOPS of 16,000.
+
+**Provisioned IOPS (PIOPS) SSD**
+
+- Used for critical business applications with sustained I/O performance, applications that need more than 16,000 IOPS, and large databases.
+- Great for databases workloads (sensitive to storage performance and consistency).
+- io1 (4 GiB - 1 TiB)
+  - Max PIOPS of 64,000 for Nitro EC2 instances and 32,000 for non-Nitro instances.
+  - Can increase PIOPS independently of volume size.
+- io2 (4 GiB - 64 TiB)
+  - Sub-millisecond latency.
+  - Max PIOPS of 256,000 with an IOPS:GiB ration of 1,000:1.
+- Support EBS multi-attach (attach the same volume to multiple instances).
+
+**Hard Disk Drive (HDD)**
+
+- Cannot be used as boot volumes.
+- Size from 125 GiB to 16 TiB.
+- Throughput optimized HDD (st1)
+  - Used for big data, data warehouses, and log processing.
+  - Cost-effective storage for frequently accessed workloads.
+  - Max throughput of 500 MiB/s, max IOPS of 500.
+- Cold HDD (sc1)
+  - Lowest cost storage for less frequently accessed workloads.
+  - Used for infrequently accessed data, such as backups and archives.
+  - Max throughput of 250 MiB/s, max IOPS of 250.
