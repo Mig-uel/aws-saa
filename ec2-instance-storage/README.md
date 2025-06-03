@@ -204,3 +204,29 @@ Use Cases:
 Remember, this multi-attach feature is only available for within a specified Availability Zone and is not supported for all EBS volume types.
 
 An EBS volume can only be attached up to 16 instances at a time and must use a file system that supports concurrent access.
+
+## EBS Encryption
+
+EBS encryption is a feature that allows you to encrypt EBS volumes and snapshots to protect your data at rest. It uses AWS Key Management Service (KMS) to manage the encryption keys.
+
+When you create an encrypted EBS volume, you get the following benefits:
+
+- Data at rest is encrypted using AES-256 encryption.
+- All the data in flight between the instance and the volume is encrypted.
+- All snapshots created from the encrypted volume are also encrypted.
+- All volumes created from the encrypted snapshot are also encrypted.
+- Encryption and decryption are handled transparently by AWS, so you don't need to manage the encryption keys yourself.
+- Encryption has a minimal impact on performance.
+- EBS encryption leverages keys from AWS Key Management Service (KMS) to encrypt the data.
+
+### Encryption: Encrypt an Unencrypted Volume
+
+To encrypt an unencrypted EBS volume, you can create a snapshot of the volume and then create a new encrypted volume from that snapshot. Here are the steps:
+
+1. Create an EBS snapshot of the unencrypted volume.
+   - This creates a point-in-time backup of the volume.
+2. Encrypt the EBS snapshot.
+   - Use the AWS Management Console, CLI, or SDK to create an encrypted copy of the snapshot.
+3. Create a new EBS volume from the encrypted snapshot (the volume wil also be encrypted).
+   - Specify the desired size and Availability Zone for the new volume.
+4. Now you can attach the new encrypted volume to the original EC2 instance or any other instance in the same Availability Zone.
