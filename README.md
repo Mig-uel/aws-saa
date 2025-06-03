@@ -13,3 +13,5 @@ This repository also follows the [Ultimate AWS Certified Solutions Architect Ass
 [EC2 Fundamentals](./ec2-fundamentals/README.md)
 
 [EC2 Solutions Architect Associate Level](./ec2-saa-level/README.md)
+
+[EC2 Instance Storage](./ec2-instance-storage/README.md)
