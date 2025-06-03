@@ -188,3 +188,19 @@ EBS volumes are characterized in Size, Throughput, and IOPS (Input/Output Operat
   - Lowest cost storage for less frequently accessed workloads.
   - Used for infrequently accessed data, such as backups and archives.
   - Max throughput of 250 MiB/s, max IOPS of 250.
+
+## EBS Multi-Attach - io1/io2 Family
+
+EBS Multi-Attach is a feature that allows you to attach an EBS volume to multiple EC2 instances simultaneously. This feature is available for io1 and io2 EBS volume types.
+
+- Attach the sane EBS volume to multiple EC2 instances in the same Availability Zone.
+- Each instance has full read/write permissions to the high-performance EBS volume.
+
+Use Cases:
+
+- Achieve higher application availability in clustered Linux applications (ex. Teradata)
+- Applications must manage concurrent write operations.
+
+Remember, this multi-attach feature is only available for within a specified Availability Zone and is not supported for all EBS volume types.
+
+An EBS volume can only be attached up to 16 instances at a time and must use a file system that supports concurrent access.
