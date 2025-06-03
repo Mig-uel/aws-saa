@@ -35,4 +35,6 @@ EBS volumes are a network drive not a physical drive.
 
 When you launch an EC2 instance, you can specify whether the EBS volumes attached to it should be deleted when the instance is terminated. This is controlled by the "Delete on Termination" attribute.
 
-- 
+- If set to true, the EBS volume will be deleted when the instance is terminated.
+- If set to false, the EBS volume will persist even after the instance is terminated, allowing you to reattach it to another instance later.
+- By default, the root EBS volume (the one that contains the operating system) is set to delete on termination, but you can change this setting when launching the instance or later through the AWS Management Console or CLI.
