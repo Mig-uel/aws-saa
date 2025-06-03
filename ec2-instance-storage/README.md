@@ -38,3 +38,43 @@ When you launch an EC2 instance, you can specify whether the EBS volumes attache
 - If set to true, the EBS volume will be deleted when the instance is terminated.
 - If set to false, the EBS volume will persist even after the instance is terminated, allowing you to reattach it to another instance later.
 - By default, the root EBS volume (the one that contains the operating system) is set to delete on termination, but you can change this setting when launching the instance or later through the AWS Management Console or CLI.
+
+## EBS Snapshots
+
+EBS snapshots are backups of EBS volumes that are stored in Amazon S3. They can be used to create new EBS volumes or restore existing ones.
+
+- Are backups of your EBS volumes at a specific point in time.
+- Not necessary to detach the EBS volume to create a snapshot, but recommended to ensure data consistency.
+- Can copy snapshots across regions.
+- Are incremental, meaning only the blocks that have changed since the last snapshot are saved, reducing storage costs.
+- Can be used to create new EBS volumes in the same or different Availability Zones.
+- Can be used to restore an EBS volume to a previous state.
+- Can be shared with other AWS accounts or made public, allowing others to create volumes from your snapshots.
+- Are stored in Amazon S3, but you cannot access them directly like regular S3 objects.
+- Are automatically encrypted if the source EBS volume is encrypted, and can be used to create encrypted volumes in other regions.
+- Can be created manually or automatically using Amazon Data Lifecycle Manager (DLM) to manage snapshot schedules and retention policies.
+- Can be used to create AMIs (Amazon Machine Images) for launching new EC2 instances with the same configuration as the original instance.
+
+### EBS Snapshot Features
+
+EBS Snapshot Archive is a feature that allows you to move infrequently accessed snapshots to lower-cost storage, reducing costs while retaining the ability to restore them when needed.
+
+- Move a snapshot to an "archive tier" that is up to 75% cheaper than standard snapshots.
+- Takes within 24 to 72 hours to restore an archived snapshot.
+
+Recycle Bin for EBS Snapshots is a feature that allows you to recover deleted snapshots within a specified retention period, providing an additional layer of data protection.
+
+- Setup rules to retain deleted snapshots so you can recover them after an accidental deletion.
+- Retention period can be set from 1 day to 1 year.
+
+Fast Snapshot Restore is a feature that allows you to pre-warm EBS snapshots, enabling faster volume creation from snapshots.
+
+- Force full initialization of the snapshot to have no latency on the first use.
+- Benefits:
+  - Reduces the time it takes to create a new volume from a snapshot.
+  - Ensures that the data is immediately available when the volume is created.
+  - Can be enabled for specific snapshots, allowing you to optimize performance for critical workloads.
+- Pre-warms the snapshot so that when you create a new volume from it, the data is immediately available.
+  - Reduces the time it takes to create a new volume from a snapshot, especially for large volumes.
+- Can be enabled for specific snapshots, allowing you to optimize performance for critical workloads.
+- This feature is costly, so it is typically used for production workloads where performance is critical.
