@@ -160,3 +160,47 @@ An Elastic Network Interface (ENI) is a virtual network interface that you can a
   - A MAC address.
 - You can create ENI independently of instances and attach them to instances later (very useful for failover).
 - Bound to a specific Availability Zone (AZ).
+
+## EC2 Hibernate
+
+EC2 Hibernate is a feature that allows you to pause and resume your EC2 instances, preserving the in-memory state of the instance.
+
+- We know that we can stop or terminate an EC2 instance, but stopping an instance means that the instance is shut down and loses its in-memory state.
+- Stop - the data on disk (EBS volumes) is kept intact, but the in-memory state is lost.
+- Terminate - the instance is permanently deleted, and all data on disk is lost.
+
+On start the following happens:
+
+- First start: the OS boots and the EC2 User Data script is run.
+- Following starts: the OS boots, but the EC2 User Data script is not run.
+- Then your application starts, caches get warmed up, and can take a long time.
+
+With EC2 Hibernate, you can:
+
+- The in-memory state is preserved, so your application can resume quickly without a cold start.
+- The instance boot is significantly faster because the in-memory state is restored from disk.
+- The OS is not stopped or restarted.
+- Under the hood, the in-memory state is saved to the EBS root volume and restored when the instance is resumed.
+- The root EBS volume must be encrypted and have enough space to store the in-memory state.
+
+Use Cases:
+
+- Applications that require fast startup times and need to preserve in-memory state.
+- Applications that can benefit from quick resumption without losing in-memory data.
+- Use cases where you want to save costs by pausing instances instead of keeping them running.
+- For long-running applications that can be paused and resumed without losing state.
+
+### EC2 Hibernate - Good to Know
+
+- Hibernate is available for specific instance types (e.g., T3, M5, C5, R5, etc.) and requires the instance to have an EBS root volume.
+- The root EBS volume must be encrypted, and the instance must have sufficient memory to store the in-memory state.
+- When you hibernate an instance, the in-memory state is saved to the EBS root volume, and the instance is stopped.
+- When you resume the instance, the in-memory state is restored from the EBS root volume, and the instance starts quickly without a cold start.
+- Hibernate is not available for all instance types, so check the AWS documentation for the latest information on supported instance types.
+  - Supported Instance Families: C3, C4, C5, I3, M3, M4, R3, R4, T2, T3,etc.
+- Instance RAM size must be less than 150 GB.
+- Instance Size - not supported for bare metal instances.
+- AMI - Amazon Linux 2, Linux AMI, Ubuntu, RHEL, CentOS, and Windows Server.
+- Root Volume - must be an EBS volume, encrypted, not an instance store volume and must have enough space to store the in-memory state.
+- Available for On-Demand, Reserved, and Spot Instances.
+- An instance can be hibernated up to 60 days.
