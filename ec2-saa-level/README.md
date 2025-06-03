@@ -146,3 +146,17 @@ Use Cases:
 - Applications that require high availability and fault tolerance.
 - Applications that can scale horizontally and require a large number of instances.
 - Distributed applications like Hadoop, Cassandra, Kafka, etc.
+
+## Elastic Network Interfaces (ENI)
+
+An Elastic Network Interface (ENI) is a virtual network interface that you can attach to an EC2 instance in a VPC. It provides a way to manage network connectivity and IP addresses for your instances.
+
+- Logical component in a VPC that represents a virtual network card (it is what gives instances access to the network).
+- Each ENI can have the following attributes:
+  - A primary private IPv4 address, one or more secondary private IPv4 addresses, and one or more IPv6 addresses.
+  - One Elastic IP address (IPv4) per private IPv4 address.
+  - One public IPv4 address (if the subnet is configured to assign public IPs).
+  - One or more security groups.
+  - A MAC address.
+- You can create ENI independently of instances and attach them to instances later (very useful for failover).
+- Bound to a specific Availability Zone (AZ).
