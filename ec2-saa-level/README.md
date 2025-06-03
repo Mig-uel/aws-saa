@@ -73,3 +73,76 @@ When we are SSHing into an EC2 instance:
 
 - We cannot SSH into the private IP address from outside the VPC because we are not within the VPC.
 - We can only SSH into the public IP address from outside the VPC.
+
+## Placement Groups
+
+Placement groups are a way to control the placement of EC2 instances within a single Availability Zone (AZ) to meet specific needs.
+
+We want to use placement groups when we want to:
+
+- Have control over the EC2 Instance placement strategy.
+- We do not get direct interaction with the hardware, but we can influence the placement of instances.
+- When you create a placement group, you specify one of the following strategies:
+  - **Cluster**: Place instances close together in a single AZ for low latency and high throughput (high performance, high risk).
+  - **Spread**: Place instances across multiple hardware to reduce the risk of simultaneous failures (max 7 instances per AZ) (low performance, low risk) - for critical applications.
+  - **Partition**: Similar to Spread, but spreads instances across many different partitions within the same AZ (which rely on different set of racks) within the same AZ. Scales to 100s of instances per group (Hadoop, Cassandra, Kafka, etc.) (medium performance, medium risk).
+
+### Placement Groups: Cluster
+
+In a cluster placement group, instances are placed close together in a single Availability Zone (AZ) to achieve low latency and high throughput.
+
+Pros:
+
+- Great network performance (10 Gbps bandwidth between instances with Enhanced Networking enabled).
+- Low latency communication between instances.
+
+Cons:
+
+- If the AZ fails, all instances fails at the same time.
+- Not suitable for high availability applications.
+- Limited to a single AZ, so if you need high availability, you should use multiple AZs.
+
+Use Cases:
+
+- High-performance computing (HPC) applications.
+- Big data applications that require low latency and high throughput.
+- Applications that need extremely low network latency, such as financial applications or real-time analytics.
+
+### Placement Groups: Spread
+
+In a spread placement group, instances are placed across multiple hardware to reduce the risk of simultaneous failures. All the EC2 instances in a spread placement group are placed spread across different AZs and different hardware.
+
+Pros:
+
+- Can span multiple AZs.
+- Reduces the risk of simultaneous failures.
+- EC2 instances are placed on different hardware, so if one instance fails, the others are not affected.
+
+Cons:
+
+- Limited to a maximum of 7 instances per AZ per placement group.
+- Not suitable for applications that require low latency and high throughput.
+
+Use Cases:
+
+- Critical applications that require high availability and fault tolerance.
+- Applications that can tolerate some latency but require high availability.
+
+### Placement Groups: Partition
+
+In a partition placement group, instances are spread across many different partitions within the same AZ, which rely on different sets of racks. This allows for better fault tolerance and scalability.
+
+Each partition represents a rack of hardware, and instances in different partitions do not share the same underlying hardware.
+
+- You can have up to 7 partitions per AZ, and each partition can have multiple instances.
+- Spans multiple AZs in the same region.
+- Scales to 100s of instances per group.
+- The instances in a partition do not share the same racks with the instances in other partitions.
+- A partition failure can affect many EC2 instances, but won't affect other partitions.
+- EC2 instances get access to the partition information as metadata.
+
+Use Cases:
+
+- Applications that require high availability and fault tolerance.
+- Applications that can scale horizontally and require a large number of instances.
+- Distributed applications like Hadoop, Cassandra, Kafka, etc.
