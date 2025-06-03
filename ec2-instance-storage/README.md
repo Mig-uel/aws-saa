@@ -78,3 +78,26 @@ Fast Snapshot Restore is a feature that allows you to pre-warm EBS snapshots, en
   - Reduces the time it takes to create a new volume from a snapshot, especially for large volumes.
 - Can be enabled for specific snapshots, allowing you to optimize performance for critical workloads.
 - This feature is costly, so it is typically used for production workloads where performance is critical.
+
+## AMI (Amazon Machine Image) Overview
+
+An AMI (Amazon Machine Image) is a pre-configured template that contains the operating system, application server, and applications required to launch an EC2 instance. It serves as a blueprint for creating new instances.
+
+- AMI stands for Amazon Machine Image.
+- AMIs are a customization of an EC2 instance.
+  - You add your own software, configuration, operating system, monitoring, etc.
+  - Fast boot/configuration time because all your software is pre-packaged.
+- AMI are built for a specific region (and can be copied across regions).
+  - You can copy an AMI from one region to another, but it must be done explicitly.
+- You can launch EC2 instances from:
+  - A public AMI (AWS provided)
+  - Your own AMI (customized; you make and maintain them)
+  - An AWS Marketplace AMI (third-party provided)
+
+### AMI Process (from an EC2 Instance)
+
+1. Start an EC2 instance and customize it (install software, configure settings, etc.).
+2. Stop the instance to ensure data consistency.
+3. Build an AMI from the stopped instance.
+   - This creates a snapshot of the root EBS volume and stores it as an AMI.
+4. The AMI can now be used to launch new instances with the same configuration.
