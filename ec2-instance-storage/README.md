@@ -101,3 +101,20 @@ An AMI (Amazon Machine Image) is a pre-configured template that contains the ope
 3. Build an AMI from the stopped instance.
    - This creates a snapshot of the root EBS volume and stores it as an AMI.
 4. The AMI can now be used to launch new instances with the same configuration.
+
+## EC2 Instance Store
+
+An EC2 instance store is a type of storage that provides temporary block-level storage for EC2 instances. It is physically attached to the host machine and is ideal for high-performance workloads that require low-latency access to data.
+
+- EBS volumes are network drives with good but limited performance.
+- If you need high performance hardware disk, use an instance store.
+- Instance store volumes are physically attached to the host machine.
+
+Instance Stores:
+
+- Provide better I/O performance than EBS volumes.
+- EC2 instance stores are ephemeral, meaning they are temporary and data is lost when the instance is stopped or terminated.
+- Good for buffer, cache, scratch data, or temporary data that does not need to persist beyond the instance lifecycle.
+- Risk of data loss if the instance fails or is terminated.
+- Cannot be detached and reattached to other instances like EBS volumes.
+- It is you responsibility to manage data persistence and backups.
