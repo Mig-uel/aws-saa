@@ -77,3 +77,24 @@ AWS consists of:
 - Amazon has 400+ Points of Presence (400+ Edge Locations and 10+ Regional Caches) in 90+ cities across 40+ countries.
 - They are used to deliver content to end-users with low latency through services like Amazon CloudFront (a Content Delivery Network or CDN).
 - Edge Locations are separate from AWS Regions and AZs.
+
+### More Information
+
+- AWS has Global Services:
+
+  - Identity and Access Management (IAM)
+  - Amazon Route 53 (DNS service)
+  - Amazon CloudFront (CDN service)
+  - WAF (Web Application Firewall)
+
+- Most AWS services are region-specific, meaning you need to select a region to use them.
+- Region-specific services include:
+
+  - Amazon EC2 (Elastic Compute Cloud)
+  - Amazon S3 (Simple Storage Service)
+  - Amazon RDS (Relational Database Service)
+  - AWS Lambda
+  - Amazon VPC (Virtual Private Cloud)
+
+- Some services are global, meaning they are not tied to a specific region (e.g., IAM, Route 53, CloudFront).
+- To know if a service is global or region-specific, check the AWS documentation for that service at [https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/).
