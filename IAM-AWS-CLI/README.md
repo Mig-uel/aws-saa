@@ -29,4 +29,4 @@
 ```
 
 - In AWS, you do not allow everyone to do everything by default. Instead, you start with no permissions and then explicitly grant permissions as needed.
-- In AWS, you apoply the principle of **least privilege**, which means giving users only the permissions they need to perform their tasks and no more.
+- In AWS, you apply the principle of **least privilege**, which means giving users only the permissions they need to perform their tasks and no more.
