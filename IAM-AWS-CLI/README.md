@@ -31,6 +31,8 @@
 - In AWS, you do not allow everyone to do everything by default. Instead, you start with no permissions and then explicitly grant permissions as needed.
 - In AWS, you apply the principle of **least privilege**, which means giving users only the permissions they need to perform their tasks and no more.
 
+---
+
 ## IAM Policies
 
 - Let's say we have a group called "Developers" with three users: Alice, Bob, and Charlie. If we assign a policy to the "Developers" group that allows access to Amazon S3, all three users will inherit that permission.
@@ -75,6 +77,8 @@
   - **Action**: Specifies the action or actions that are allowed or denied (e.g., "s3:ListBucket").
   - **Resource**: Specifies the resource or resources to which the action applies (e.g., "arn:aws:s3:::example_bucket").
   - **Condition**: (Optional) Specifies conditions under which the statement is in effect.
+
+---
 
 ## IAM MFA Overview
 
