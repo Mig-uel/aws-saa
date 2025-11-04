@@ -164,3 +164,12 @@
 
 - By using IAM roles, you can securely grant permissions to AWS services without the need to manage access keys directly.
 - IAM roles provide temporary security credentials that are automatically rotated and managed by AWS.
+
+---
+
+## IAM Security Tools
+
+- **IAM Credentials Report (account-level)**: A report that provides a snapshot of the status of all IAM users and their credentials in your AWS account.
+- **IAM Access Advisor (user-level)**: A tool that shows the service permissions granted to an IAM user and when those services were last accessed.
+  - You can use this information to identify and remove unnecessary permissions from IAM users.
+  - Helps enforce the principle of least privilege by ensuring users only have the permissions they need.
