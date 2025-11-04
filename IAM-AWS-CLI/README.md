@@ -109,3 +109,41 @@
 
 - MFA = Something you know (password) + Something you have (MFA device)
 - By enabling MFA, even if a user's password is compromised, an attacker would still need access to the MFA device to gain access to the account.
+
+---
+
+## AWS Access Keys, CLI, and SDK
+
+### How Can Users Access AWS?
+
+- Users can access AWS in several ways:
+
+  - **AWS Management Console**: A web-based interface for managing AWS services (protected by password and MFA).
+  - **AWS Command Line Interface (CLI)**: A tool that allows users to interact with AWS services using command-line commands (protected by access keys).
+  - **AWS Software Development Kits (SDKs)**: Libraries that allow developers to interact with AWS services programmatically using various programming languages (e.g., Python, Java, JavaScript) (protected by access keys).
+
+- Access Keys are generated through the AWS Management Console for IAM users.
+- Users manage their access keys securely and avoid sharing them publicly.
+- **Important**: Do not share your access keys with anyone or include them in publicly accessible code repositories.
+
+- Access keys consist of two parts:
+
+  - **Access Key ID**: A unique identifier for the access key (~= username).
+  - **Secret Access Key**: A secret value used to sign requests to AWS services (~= password).
+
+### What is AWS CLI?
+
+- The AWS Command Line Interface (CLI) is a unified tool that allows users to manage AWS services from the command line.
+- AWS CLI provides direct access to the public APIs of AWS services.
+- Users can perform various tasks, such as creating and managing resources, deploying applications, and automating workflows.
+- AWS CLI supports multiple operating systems, including Windows, macOS, and Linux.
+- To use AWS CLI, users need to install it on their local machine and configure it with their access keys.
+- Once configured, users can run AWS CLI commands to interact with AWS services.
+
+### What is AWS SDK?
+
+- AWS Software Development Kits (SDKs) are libraries that provide a convenient way for developers to interact with AWS services using various programming languages.
+- AWS SDKs handle tasks such as authentication, request signing, and error handling, making it easier for developers to work with AWS services.
+- AWS SDKs are available for multiple programming languages, including Python (Boto3), Java, JavaScript (Node.js), Ruby, PHP, and .NET.
+- Developers can use AWS SDKs to build applications that leverage AWS services, such as storage, databases, machine learning, and more.
+- AWS SDKs are regularly updated to support new features and services offered by AWS.
