@@ -173,3 +173,18 @@
 - **IAM Access Advisor (user-level)**: A tool that shows the service permissions granted to an IAM user and when those services were last accessed.
   - You can use this information to identify and remove unnecessary permissions from IAM users.
   - Helps enforce the principle of least privilege by ensuring users only have the permissions they need.
+
+---
+
+## IAM Guidelines & Best Practices
+
+- Do not use the root account for everyday tasks.
+- One physical user = One IAM user.
+- Use groups to assign permissions to IAM users.
+- Apply the principle of least privilege.
+- Create a strong password policy.
+- Enable Multi-Factor Authentication (MFA) for all users.
+- Create and use Roles for AWS services.
+- Use Access Keys for programmatic access.
+- Audit permissions regularly using IAM Access Advisor and IAM Credentials Report.
+- **Never share IAM users or access keys.**
