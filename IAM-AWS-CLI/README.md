@@ -75,3 +75,33 @@
   - **Action**: Specifies the action or actions that are allowed or denied (e.g., "s3:ListBucket").
   - **Resource**: Specifies the resource or resources to which the action applies (e.g., "arn:aws:s3:::example_bucket").
   - **Condition**: (Optional) Specifies conditions under which the statement is in effect.
+
+## IAM MFA Overview
+
+### IAM — Password Policy
+
+- In AWS, we have two defense mechanisms to protect our IAM users:
+
+  - **Multi-Factor Authentication (MFA)**: An additional layer of security that requires users to provide two or more forms of authentication.
+  - **Password Policy**: A set of rules that define the complexity and expiration of passwords for IAM users.
+
+- A strong password policy can help prevent unauthorized access to your AWS resources by ensuring that users create secure passwords.
+- A password policy can include requirements such as:
+
+  - Minimum password length
+  - Use of uppercase and lowercase letters
+  - Inclusion of numbers and special characters
+  - Password expiration period
+  - Prevention of password reuse
+
+- Multi-Factor Authentication (MFA) adds an extra layer of security by requiring users to provide a second form of authentication in addition to their password.
+- Users have access to your AWS resources and can possibly change configurations or delete resources in your account.
+- **You should want to protect your root account and all IAM users with MFA.**
+- MFA can be implemented using various methods, such as:
+
+  - Virtual MFA devices (e.g., smartphone apps like Google Authenticator or Authy)
+  - Hardware MFA devices (e.g., physical tokens)
+  - SMS-based MFA (text messages sent to a mobile phone)
+
+- MFA = Something you know (password) + Something you have (MFA device)
+- By enabling MFA, even if a user's password is compromised, an attacker would still need access to the MFA device to gain access to the account.
