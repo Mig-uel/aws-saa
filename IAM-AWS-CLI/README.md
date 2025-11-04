@@ -131,7 +131,7 @@
   - **Access Key ID**: A unique identifier for the access key (~= username).
   - **Secret Access Key**: A secret value used to sign requests to AWS services (~= password).
 
-### What is AWS CLI?
+### What Is AWS CLI?
 
 - The AWS Command Line Interface (CLI) is a unified tool that allows users to manage AWS services from the command line.
 - AWS CLI provides direct access to the public APIs of AWS services.
@@ -140,10 +140,27 @@
 - To use AWS CLI, users need to install it on their local machine and configure it with their access keys.
 - Once configured, users can run AWS CLI commands to interact with AWS services.
 
-### What is AWS SDK?
+### What Is AWS SDK?
 
 - AWS Software Development Kits (SDKs) are libraries that provide a convenient way for developers to interact with AWS services using various programming languages.
 - AWS SDKs handle tasks such as authentication, request signing, and error handling, making it easier for developers to work with AWS services.
 - AWS SDKs are available for multiple programming languages, including Python (Boto3), Java, JavaScript (Node.js), Ruby, PHP, and .NET.
 - Developers can use AWS SDKs to build applications that leverage AWS services, such as storage, databases, machine learning, and more.
 - AWS SDKs are regularly updated to support new features and services offered by AWS.
+
+---
+
+## IAM Roles For AWS Services
+
+- Some AWS services will need to interact with other AWS services on your behalf. For example, an EC2 instance may need to read files from an S3 bucket.
+- Instead of embedding your access keys in the application running on the EC2 instance, you can create an IAM role with the necessary permissions and assign that role to the EC2 instance.
+- To do so, we will assign permissions to AWS services using **IAM Roles**.
+
+- Common roles include:
+
+  - **EC2 Role**: Allows EC2 instances to access other AWS services.
+  - **Lambda Role**: Allows AWS Lambda functions to access other AWS services.
+  - **ECS Task Role**: Allows ECS tasks to access other AWS services.
+
+- By using IAM roles, you can securely grant permissions to AWS services without the need to manage access keys directly.
+- IAM roles provide temporary security credentials that are automatically rotated and managed by AWS.
