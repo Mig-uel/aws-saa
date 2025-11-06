@@ -88,3 +88,48 @@
   - Log processing applications
   - High-frequency online transaction processing (OLTP) systems
 
+## Security Groups & Classic Ports
+
+### Intro to Security Groups
+
+- Security groups are a fundamental component of network security in AWS.
+- Security groups act as virtual firewalls for your EC2 instances to control inbound and outbound traffic.
+- Security groups only allow "allow" rules; there are no "deny" rules.
+- Security groups rules can reference IP addresses or other security groups.
+- By default, a security group denies all inbound traffic and allows all outbound traffic.
+
+### Security Groups - Deeper Dive
+
+- Security groups are acting as a firewall at the instance level, controlling both inbound and outbound traffic.
+- They regulate:
+
+  - Access to ports
+  - Authorized IP ranges (IPv4 and IPv6)
+  - Control inbound network (from other sources to the instance)
+  - Control outbound network (from the instance to other destinations)
+
+- Security groups are stateful, meaning if you allow an incoming request from an IP, the response is automatically allowed regardless of outbound rules.
+- You can assign multiple security groups to an instance.
+- Changes to security group rules are applied immediately.
+
+### Security Groups - Good To Know
+
+- Can be attached to multiple instances.
+- They are locked down to a region or VPC combination (cannot span regions or VPCs).
+- Lives "outside" the instance (not installed on the instance) -- if traffic is blocked, it never reaches the instance.
+- **It is good to maintain one separate security group for SSH/RDP access** to make management easier.
+- If your application is not accessible (timeout), check security group rules first! It mostly is a security group issue.
+- If your application is refusing connection (immediate error), it is mostly an application issue.
+- All inbound traffic is blocked by default.
+- All outbound traffic is allowed by default.
+
+### Commonly Used Ports
+
+| Port | Protocol | Service               | Description             |
+| ---- | -------- | --------------------- | ----------------------- | -------------------- |
+| 22   | TCP      | SSH (Linux instances) | Secure Shell for Linux  |
+| 21   | TCP      | FTP                   | File Transfer Protocol  |
+| 22   |          | TCP                   | SFTP                    | Secure File Transfer |
+| 80   | TCP      | HTTP                  | Web traffic             |
+| 443  | TCP      | HTTPS                 | Secure web traffic      |
+| 3389 | TCP      | RDP                   | Remote Desktop Protocol |
