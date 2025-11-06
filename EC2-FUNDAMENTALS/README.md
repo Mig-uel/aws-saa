@@ -133,3 +133,17 @@
 | 80   | TCP      | HTTP                  | Web traffic             |
 | 443  | TCP      | HTTPS                 | Secure web traffic      |
 | 3389 | TCP      | RDP                   | Remote Desktop Protocol |
+
+### EC2 Instance Roles (IAM Roles for EC2)
+
+- EC2 Instance Roles are a way to securely provide permissions to your EC2 instances without using long-term credentials.
+- An instance role is an IAM role that you can attach to an EC2 instance.
+- When an instance role is attached to an EC2 instance, the instance can obtain temporary security credentials from the instance metadata service.
+- This allows applications running on the instance to access AWS services securely.
+- Benefits of using instance roles include:
+  - Enhanced security by avoiding hard-coded credentials.
+  - Simplified credential management.
+  - Automatic rotation of temporary credentials.
+- To create and use an instance role:
+  - Create an IAM role with the necessary permissions.
+  - Attach the role to your EC2 instance during launch or to an existing instance.
