@@ -147,3 +147,159 @@
 - To create and use an instance role:
   - Create an IAM role with the necessary permissions.
   - Attach the role to your EC2 instance during launch or to an existing instance.
+
+## EC2 Instances Purchasing Options
+
+So far, we have been using **On-Demand Instances**.
+
+On-Demand instances let you pay for compute capacity by the hour or second with no long-term commitments.
+
+- Great for short-term, spiky, or unpredictable workloads.
+
+There are other purchasing options available as well:
+
+- **Reserved Instances**:
+
+  - 1-year or 3-year term.
+  - Great for long-term, steady-state workloads.
+  - Significant cost savings compared to On-Demand.
+  - **Convertible Reserved Instances** allow you to change the instance type during the term.
+
+- **Savings Plans**:
+
+  - 1-year or 3-year term.
+  - This is a more modern alternative to **Reserved Instances**.
+  - Commit to a consistent amount of usage (measured in $/hour) for 1 or 3 years.
+  - Flexible across instance types, regions, and operating systems.
+
+- **Spot Instances**:
+
+  - Purchase unused EC2 capacity at a significant discount (up to 90% off On-Demand prices).
+  - Great for fault-tolerant and flexible applications.
+  - Instances can be interrupted by AWS with a 2-minute warning when the capacity is needed elsewhere.
+
+- **Dedicated Hosts**:
+
+  - Physical servers dedicated to your use.
+  - Useful for meeting compliance requirements and licensing needs.
+
+- **Dedicated Instances**:
+
+  - Run in a VPC on hardware dedicated to a single customer.
+  - Do not share hardware with instances from other accounts.
+
+- **Capacity Reservations**:
+  - Reserve capacity for your EC2 instances in a specific Availability Zone for any duration.
+  - Ensures that you have access to EC2 capacity when you need it.
+
+### EC2 On-Demand Instances
+
+On-Demand Instances let you pay for compute capacity by the hour or second with no long-term commitments.
+
+- You pay for what you use.
+  - Linux or Windows - billed per second, with a minimum of 60 seconds.
+  - All other OS types - billed per hour.
+- Has the highest cost compared to other purchasing options but no upfront payment or long-term commitment is required.
+- Recommended for:
+  - Short-term, spiky, or unpredictable workloads that cannot be interrupted.
+  - Applications being developed or tested on EC2 for the first time.
+
+### EC2 Reserved Instances
+
+Reserved Instances provide you with a significant discount (up to 75%) compared to On-Demand instance pricing (% discount changes over time).
+
+- You reserve a specific instance type in a specific region for a 1-year or 3-year term.
+- Reservation period options:
+  - 1-year term (lower discount).
+  - 3-year term (higher discount).
+- Payment options:
+  - All Upfront (highest discount).
+  - Partial Upfront (moderate discount).
+  - No Upfront (lowest discount).
+- Reserved Instance's scope can be:
+  - Regional (applies to any instance of the specified type in the region).
+  - Zonal (applies to a specific Availability Zone, providing capacity reservation).
+- Recommended for:
+  - Steady-state workloads with predictable usage.
+  - Example: Web servers, databases, and other applications that run continuously.
+- You can buy or sell Reserved Instances on the AWS Reserved Instance Marketplace.
+
+There is also another type of Reserved Instances called **Convertible Reserved Instances**.
+
+Convertible Reserved Instances allow you to change the instance type, operating system, or tenancy during the term.
+
+- Up to 54% discount compared to On-Demand pricing.
+- Recommended for:
+  - Workloads that may change over time but still require long-term commitment.
+
+### EC2 Savings Plans
+
+Savings Plans offer significant cost savings (up to 72%) compared to On-Demand pricing in exchange for a commitment to a consistent amount of usage (measured in $/hour) for a 1-year or 3-year term.
+
+- With Savings Plans, you commit to a specific dollar amount per hour for a 1-year or 3-year term ($10/hour for 3 years = $262,800 total).
+- Usage beyond your committed amount is billed at On-Demand rates.
+- Instances are locked to specific instance families within a region (e.g., m5 in us-east-1).
+- Flexible across instance sizes, operating systems, and tenancies (host, dedicated, default) within the chosen instance family.
+- Recommended for:
+  - Users who want cost savings but need flexibility in instance types and sizes.
+
+### EC2 Spot Instances
+
+Spot Instances allow you to take advantage of unused EC2 capacity at a significant discount (up to 90% off On-Demand prices).
+
+- Spot Instances can be interrupted by AWS with a 2-minute warning when the capacity is needed elsewhere.
+- This is the most cost-effective option for running EC2 instances.
+- Recommended for:
+  - Fault-tolerant and flexible applications that can handle interruptions.
+  - Example: Big data analysis, containerized workloads, CI/CD, web crawling, and batch processing.
+
+### EC2 Dedicated Hosts
+
+Dedicated Hosts are physical servers dedicated to your use.
+
+- Useful for meeting compliance requirements and licensing needs.
+- You have full control over the placement of instances on the host.
+- You can use your existing server-bound software licenses (e.g., Windows Server, SQL Server, SUSE Linux).
+- Purchasing options:
+  - On-Demand: Pay for Dedicated Hosts by the hour with no long-term commitments.
+  - Reserved: Reserve Dedicated Hosts for a 1-year or 3-year term with significant cost savings.
+- This is the most expensive option for running EC2 instances.
+- Recommended for:
+  - Workloads that require dedicated physical servers for compliance or licensing reasons.
+  - Example: Regulatory compliance, software licensing requirements.
+
+### EC2 Dedicated Instances
+
+Dedicated Instances run in a VPC on hardware dedicated to a single customer.
+
+- Instances run on hardware that is dedicated to you, but you do not have control over the physical host.
+- You may share the underlying hardware with other instances from your account.
+- No control over instance placement on the host.
+- Recommended for:
+  - Workloads that require dedicated hardware but do not need the control provided by Dedicated Hosts.
+  - Example: Applications with specific compliance requirements.
+
+### EC2 Capacity Reservations
+
+Capacity Reservations enable you to reserve capacity for your EC2 instances in a specific Availability Zone for any duration.
+
+- You reserve On-Demand instances capacity in a specific Availability Zone for as long as you need it.
+- You always have access to the capacity when you need it.
+- No time commitment is required and no billing discounts are applied.
+- Combine with Regional Reserved Instances or Savings Plans to reduce costs.
+- You are charged for the capacity you reserve, regardless of whether you use it.
+- Recommended for:
+  - Workloads that require guaranteed access to EC2 capacity in a specific Availability Zone.
+  - Example: Applications with predictable traffic patterns that need to ensure capacity availability.
+
+### Which Purchasing Option Is Right for You?
+
+Here are some analogies to help you understand the different EC2 purchasing options:
+
+- **On-Demand Instances**: Like renting a car for a day. You pay for what you use without any long-term commitment.
+- **Reserved Instances**: Like leasing a car for a year. You commit to using it for a long period and get a discount.
+- **Savings Plans**: Like subscribing to a car-sharing service. You commit to a certain amount of usage and get flexibility within that commitment.
+- **Spot Instances**: Like booking a last-minute hotel room at a discount. You get a great deal but may have to leave if the room is needed by someone else.
+- **Dedicated Hosts**: Like owning a car. You have full control and can use it as you see fit, but it comes with higher costs.
+- **Dedicated Instances**: Like renting a private car. You get dedicated use without the full control of ownership.
+- **Capacity Reservations**: Like reserving a parking spot. You ensure you have a place when you need it, regardless of whether you use it or not.
