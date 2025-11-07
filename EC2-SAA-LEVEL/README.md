@@ -138,3 +138,38 @@ An Elastic Network Interface (ENI) is a virtual network interface that can be at
   - A source/destination check flag
 - ENIs can be attached and detached from instances, allowing for flexible network configurations.
 - ENIs are bound to a specific Availability Zone and cannot be moved between zones.
+
+## EC2 Hibernation
+
+We know that when we stop an EC2 instance, the data on the instance store is kept intact but the data in RAM is lost. And when we terminate an instance, both the instance store and RAM data are lost.
+
+The typical on startup sequence for an EC2 instance is:
+
+- OS boots up
+- EC2 instance user data scripts run
+- Applications start running
+- Caches are warmed up and can take time
+
+With EC2 Hibernation, when you stop an instance, the contents of the RAM are saved to the EBS root volume. When you start the instance again, the RAM contents are restored, allowing the instance to resume from where it left off.
+
+- The in-memory (RAM) state of the instance is preserved.
+- The instance boots up faster since it doesn't have to go through the full OS boot process.
+- Applications can resume from their previous state without needing to restart or reinitialize.
+- Hibernation is supported for certain instance types and requires the root volume to be an EBS volume.
+- Under the hood: the RAM state is written to a swap file on the EBS root volume.
+- There are additional charges for the EBS storage used to save the RAM state during hibernation.
+- Use Cases:
+  - Applications that require fast startup times.
+  - Workloads that need to maintain state across instance stops and starts.
+
+### EC2 Hibernation - Good to Know
+
+- Hibernation is supported on both Linux and Windows instances.
+- The supported instance types include T2, T3, M4, M5, C4, C5, R4, R5, and others.
+- The maximum amount of RAM that can be hibernated is 150 GB.
+- Does not support bare metal instances.
+- Supports many Amazon Machine Images (AMIs), but not all.
+- The root EBS volume must be encrypted, not using instance store volumes, and must be at least 2 GB larger than the amount of RAM.
+- Available for On-Demand, Reserved, and Spot Instances.
+- An instance can be hibernated for up to 60 days. After that, it will be automatically terminated.
+- Hibernation must be enabled when the instance is launched; it cannot be enabled on an existing instance.
