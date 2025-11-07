@@ -121,3 +121,20 @@ We can have up to seven partitions per Availability Zone in a placement group.
   - Instances in different partitions can still communicate with each other.
   - You can launch instances in multiple Availability Zones within a partition placement group.
   - If an instance in a partition fails, it does not impact the performance of the other partitions in the group but may impact other instances within the same partition.
+
+### Elastic Network Interfaces (ENIs)
+
+An Elastic Network Interface (ENI) is a virtual network interface that can be attached to an instance in a VPC. ENIs are used to provide additional network interfaces to an instance, allowing it to have multiple IP addresses and network configurations.
+
+- It is a logical component of a VPC (Virtual Private Cloud) that represents a virtual network card.
+- An ENI can include the following attributes:
+  - A primary private IPv4 address
+  - One or more secondary private IPv4 addresses
+  - One Elastic IP address (IPv4) per private IPv4 address
+  - One public IPv4 address
+  - One or more IPv6 addresses
+  - One or more security groups
+  - A MAC address
+  - A source/destination check flag
+- ENIs can be attached and detached from instances, allowing for flexible network configurations.
+- ENIs are bound to a specific Availability Zone and cannot be moved between zones.
