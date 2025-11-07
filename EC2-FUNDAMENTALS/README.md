@@ -303,3 +303,41 @@ Here are some analogies to help you understand the different EC2 purchasing opti
 - **Dedicated Hosts**: Like owning a car. You have full control and can use it as you see fit, but it comes with higher costs.
 - **Dedicated Instances**: Like renting a private car. You get dedicated use without the full control of ownership.
 - **Capacity Reservations**: Like reserving a parking spot. You ensure you have a place when you need it, regardless of whether you use it or not.
+
+## EC2 Spot Instances & Spot Fleet - Deep Dive
+
+### EC2 Spot Instance Requests
+
+We know that with a Spot Instance, we can bid for unused EC2 capacity at a significant discount.
+
+- Discount can be up to 90% off On-Demand prices.
+- We can define a max spot price (the highest price we are willing to pay per hour).
+  - The hourly spot price varies based on supply and demand.
+  - If the current spot price exceeds our max price, you can choose to either stop or terminate the instance.
+- Spot Instances can be interrupted by AWS with a 2-minute warning when the capacity is needed elsewhere.
+
+A legacy strategy was to create a Spot Block, which allowed you to run Spot Instances for a fixed duration (1 to 6 hours) without interruption. However, Spot Blocks have been deprecated and are no longer available for new requests.
+
+Spot Instances are ideal for:
+
+- Fault-tolerant and flexible applications that can handle interruptions.
+- Example use cases include big data analysis, containerized workloads, CI/CD, web crawling, and batch processing.
+
+### Spot Fleets
+
+A Spot Fleet is a collection of Spot Instances and, optionally, On-Demand Instances.
+
+- The Spot Fleet will attempt to meet the target capacity specified in the request with the lowest possible cost.
+- You can specify multiple instance types and Availability Zones in your Spot Fleet request to increase the chances of getting the desired capacity.
+- Spot Fleets can automatically replace interrupted Spot Instances to maintain the target capacity.
+- You can also set a maximum price for the entire Spot Fleet, ensuring that you do not exceed your budget.
+- Spot Fleets are useful for large-scale, distributed applications that require a significant amount of compute capacity at a low cost.
+
+Strategies for Spot Fleets include:
+
+- `lowestPrice`: Launch instances from the pools with the lowest price (cost optimization, short workloads).
+- `diversified`: Distribute instances across all specified pools (availability optimization, long workloads).
+- `capacityOptimized`: Launch instances from the pools with the optimal capacity for the number of instances requested (availability optimization, long workloads).
+- `priceCapacityOptimized`: A combination of price and capacity optimization strategies (recommended for most use cases).
+
+Spot fleets allow us to automatically manage and optimize the use of Spot Instances, making it easier to take advantage of cost savings while maintaining the required compute capacity for our applications.
