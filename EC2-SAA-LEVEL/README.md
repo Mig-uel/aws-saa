@@ -61,3 +61,63 @@ Overall, try to avoid using Elastic IPs unless absolutely necessary:
 - They often reflect a poor architecture design.
 - Instead, use a random public IP and use DNS to point to it.
 - Or, better yet, use a Load Balancer with a static DNS name.
+
+### EC2 Placement Groups
+
+A placement group is a logical grouping of instances within a single Availability Zone. Using placement groups enables applications to participate in a low-latency, 10 Gbps network between instances.
+
+- Sometimes you want control over how your instances are placed on underlying hardware.
+
+When you create a placement group, you must specify the placement strategy for the group. The placement strategies are:
+
+- Cluster: Packs instances close together inside an Availability Zone. This strategy is recommended for applications that need low network latency, high network throughput, or both.
+- Spread: Strictly places a small group of instances across distinct underlying hardware to reduce correlated failures (maximum of seven running instances per Availability Zone per group).
+- Partition: Divides each group into logical segments called partitions. Each partition has its own set of racks. AWS ensures that no two partitions in a placement group share the same racks. This strategy is recommended for large distributed and replicated workloads, such as HDFS, HBase, and Cassandra.
+
+### Placement Groups - Cluster
+
+In a cluster placement group, instances are placed physically close together within a single Availability Zone. This placement strategy is ideal for applications that require low network latency and high network throughput between instances.
+
+- Use Cases:
+  - High-performance computing (HPC) applications
+  - Big data analytics
+  - Distributed databases
+- Benefits:
+  - Low latency communication between instances
+  - High bandwidth for data transfer
+- Considerations:
+  - All instances must be launched in the same Availability Zone.
+  - There are limits on the number of instances that can be launched in a cluster placement group.
+  - If an instance in the group fails, it may impact the performance of the entire group.
+
+### Placement Groups - Spread
+
+A spread placement group is the complete opposite of a cluster placement group. In a spread placement group, instances are placed on distinct underlying hardware to reduce the risk of correlated failures. This placement strategy is ideal for applications that require high availability and fault tolerance.
+
+- Use Cases:
+  - Critical applications that require high availability
+  - Applications that need to be resilient to hardware failures
+- Benefits:
+  - Reduced risk of correlated failures
+  - Increased fault tolerance
+- Considerations:
+  - A maximum of seven running instances per Availability Zone per group.
+  - Instances can be launched across multiple Availability Zones.
+  - If an instance in the group fails, it does not impact the performance of the other instances in the group.
+
+### Placement Groups - Partition
+
+A partition placement group divides each group into logical segments called partitions. Each partition has its own set of racks, and AWS ensures that no two partitions in a placement group share the same racks. This placement strategy is ideal for large distributed and replicated workloads.
+
+We can have up to seven partitions per Availability Zone in a placement group.
+
+- Each partition represents a rack of servers.
+- Use Cases:
+  - Large distributed and replicated workloads, such as HDFS, HBase, and Cassandra.
+- Benefits:
+  - Improved fault tolerance and availability.
+  - Reduced risk of correlated failures within a partition.
+- Considerations:
+  - Instances in different partitions can still communicate with each other.
+  - You can launch instances in multiple Availability Zones within a partition placement group.
+  - If an instance in a partition fails, it does not impact the performance of the other partitions in the group but may impact other instances within the same partition.
